@@ -81,8 +81,8 @@ return packer.startup(function()
 
 	    testcases_use_single_file = true,
         template_file = { cpp = "~/comp-prog/snippets/template.cpp"},
-        received_contests_problems_path = "$(JAVA_TASK_CLASS).$(FEXT)",
-		received_problems_path = "$(CWD)/$(JAVA_TASK_CLASS).$(FEXT)",
+        received_contests_problems_path = "$(JAVA_TASK_CLASS)/$(JAVA_TASK_CLASS).$(FEXT)",
+		received_problems_path = "$(CWD)/$(JAVA_TASK_CLASS)/$(JAVA_TASK_CLASS).$(FEXT)",
     }
 
     require("presence").setup({})
