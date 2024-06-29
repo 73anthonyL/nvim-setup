@@ -33,6 +33,7 @@ return packer.startup(function()
     -- }
 
 	-- General editor settings
+    vim.opt.laststatus = 0
 	vim.opt.tabstop = 4
 	vim.opt.compatible = false
 	vim.opt.shiftwidth = 4
