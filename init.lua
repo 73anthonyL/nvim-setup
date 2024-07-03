@@ -10,6 +10,7 @@ return packer.startup(function()
 
     -- Add your other plugins here
     use 'shaunsingh/solarized.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     use 'andweeb/presence.nvim'
 
@@ -51,6 +52,7 @@ return packer.startup(function()
 	vim.opt_local.indentkeys:remove(":")
 	vim.opt.belloff = "all"
 	vim.opt.clipboard:append("unnamedplus")
+    vim.cmd.colorscheme "catppuccin-mocha"
 
 	-- Keybindings for { completion, "jk" for escape, ctrl-a to select all
 	vim.api.nvim_set_keymap("i", "{<CR>", "{<CR>}<Esc>O", { noremap = true })
@@ -59,7 +61,7 @@ return packer.startup(function()
 	vim.api.nvim_set_keymap("n", "<C-a>", "<esc>ggVG<CR>", { noremap = true })
 
 	-- Plugin-specific configuration
-	require('solarized').set()
+	--require('solarized').set()
 	require('competitest').setup {
         compile_command = {
             cpp = {
@@ -87,8 +89,13 @@ return packer.startup(function()
     }
 
     require("presence").setup({})
-    require('lspconfig').clangd.setup {}
-    
+    require('lspconfig').clangd.setup {
+        on_attach = on_attach,
+        flags = {
+            debounce_text_changes = 150,
+        }
+    }
+
     vim.api.nvim_set_keymap('n', '<leader>s', ':LspStart clangd<CR>', {noremap = true, silent = true})
     vim.api.nvim_command("set makeprg=g++\\ -Wall\\ -Wextra\\ -Wshadow\\ -Wconversion\\ -Wfloat-equal\\ -Wduplicated-cond\\ -Wlogical-op\\ -std=c++17\\ -o\\ '%:r'\\ '%'")
 	vim.api.nvim_set_keymap('n', '<leader>c', ':w <bar> make<CR>', { noremap = true, silent = true })
