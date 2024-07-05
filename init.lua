@@ -96,10 +96,12 @@ return packer.startup(function()
         }
     }
 
-    vim.api.nvim_set_keymap('n', '<leader>s', ':LspStart clangd<CR>', {noremap = true, silent = true})
     vim.api.nvim_command("set makeprg=g++\\ -Wall\\ -Wextra\\ -Wshadow\\ -Wconversion\\ -Wfloat-equal\\ -Wduplicated-cond\\ -Wlogical-op\\ -std=c++17\\ -o\\ '%:r'\\ '%'")
 	vim.api.nvim_set_keymap('n', '<leader>c', ':w <bar> make<CR>', { noremap = true, silent = true })
---	vim.api.nvim_set_keymap('n', '<leader>r', ':rightbelow vertical terminal ./%:r<CR>i', { noremap = true, silent = true })
+	vim.api.nvim_set_keymap('n', '<leader>d', ':w <bar> make<CR>', { noremap = true, silent = true })
+-- Map <Leader>d to compile and run with g++ with -fanalyze flag
+    vim.api.nvim_set_keymap('n', '<Leader>d', [[:w<bar>exec "!g++ -Wall -Wextra -Wshadow -Wconversion -Wfloat-equal -Wduplicated-cond -Wlogical-op -std=c++17 -o '%:r' '%' -fanalyzer"<CR>]], { noremap = true, silent = true })
+
 	vim.api.nvim_set_keymap('n', '<leader>r', ":rightbelow vertical terminal ./'%:r'<CR>i", { noremap = true, silent = true })
 
 
