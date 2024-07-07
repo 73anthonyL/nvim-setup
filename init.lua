@@ -52,16 +52,14 @@ return packer.startup(function()
 	vim.opt_local.indentkeys:remove(":")
 	vim.opt.belloff = "all"
 	vim.opt.clipboard:append("unnamedplus")
-    --vim.cmd.colorscheme "catppuccin-mocha"
-    vim.cmd.colorscheme "solarized"
+    vim.cmd.colorscheme "catppuccin-mocha"
+    --vim.cmd.colorscheme "solarized"
 	-- Keybindings for { completion, "jk" for escape, ctrl-a to select all
 	vim.api.nvim_set_keymap("i", "{<CR>", "{<CR>}<Esc>O", { noremap = true })
 	vim.api.nvim_set_keymap("i", "{}", "{}", { noremap = true })
 	vim.api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = true })
 	vim.api.nvim_set_keymap("n", "<C-a>", "<esc>ggVG<CR>", { noremap = true })
 
-	vim.api.nvim_set_keymap("n", "j", "gj", { noremap = true })
-	vim.api.nvim_set_keymap("n", "k", "gk", { noremap = true })
 	-- Plugin-specific configuration
 	--require('solarized').set()
 	require('competitest').setup {
