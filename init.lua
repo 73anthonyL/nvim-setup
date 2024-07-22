@@ -258,7 +258,7 @@ vim.api.nvim_set_keymap('n', '<leader>edit', ':CompetiTest edit_testcase<CR>i', 
 vim.api.nvim_set_keymap('n', '<leader>del', ':CompetiTest delete_testcase<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>run', ':CompetiTest run<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>no', ':edit %:t:r.norg<CR>:w<CR>i', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>no', ':edit %:h/%:t:r.norg<CR>:w<CR>i', { noremap = true, silent = true })
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
