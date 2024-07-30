@@ -67,26 +67,6 @@ require('lazy').setup({
     
     -- Comments
     { 'tpope/vim-commentary' },
-    {
-        "nvim-neorg/neorg",
-        lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-        version = "*", -- Pin Neorg to the latest stable release
-        config = function()
-            require("neorg").setup {
-                load = {
-                    ["core.defaults"] = {},
-                    ["core.concealer"] = {},
-                    ["core.dirman"] = {
-                        config = {
-                            workspaces = {
-                                notes = "~/comp-prog",
-                            },
-                        },
-                    },
-                }
-            }
-	end,
-    },
 })
 
 -- General editor settings
@@ -109,11 +89,11 @@ vim.cmd("filetype plugin on")
 vim.opt_local.indentkeys:remove(":")
 vim.opt.belloff = "all"
 vim.opt.clipboard:append("unnamedplus")
-vim.o.conceallevel = 2
-
+vim.o.conceallevel = 3
+vim.g.maplocalleader = "."
 -- Colorscheme setups
 vim.cmd.colorscheme "catppuccin-mocha"
--- require('solarized').set()
+--require('solarized').set()
 
 -- Keybindings for { completion, "jk" for escape, ctrl-a to select all
 vim.api.nvim_set_keymap("i", "{<CR>", "{<CR>}<Esc>O", { noremap = true })
@@ -257,8 +237,6 @@ vim.api.nvim_set_keymap('n', '<leader>add', ':CompetiTest add_testcase<CR>i', { 
 vim.api.nvim_set_keymap('n', '<leader>edit', ':CompetiTest edit_testcase<CR>i', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>del', ':CompetiTest delete_testcase<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>run', ':CompetiTest run<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<leader>no', ':edit %:h/%:t:r.norg<CR>:w<CR>i', { noremap = true, silent = true })
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
